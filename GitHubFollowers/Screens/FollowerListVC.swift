@@ -15,8 +15,16 @@ class FollowerListVC: UIViewController {
         super.viewDidLoad()
         
         navigationController?.navigationBar.prefersLargeTitles = true
+        NetworkManager.shared.getFollowers(username: username, page: 1) { followers, errorMessage in
+            guard let followers = followers else{
+                self.presentGFAlertOnMainThread(title: "Bad stuff happened", message: errorMessage!, buttonTitle: "OK")
+                return
+            }
+            
+            print("\(followers.count)")
+        }
         
-        // Do any additional setup after loading the view.
+       
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -25,14 +33,5 @@ class FollowerListVC: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
