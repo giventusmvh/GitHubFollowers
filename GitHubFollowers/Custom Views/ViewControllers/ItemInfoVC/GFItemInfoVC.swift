@@ -7,9 +7,14 @@
 
 import UIKit
 
+//protocol ItemInfoVCDelegate: AnyObject{
+//    func didTapGithubProfile(user: User)
+//    func didTapGetFollowers(user: User)
+//}
+
 class GFItemInfoVC: UIViewController {
     
-    weak var delegate: UserInfoVCDelegate!
+    //weak var delegate: ItemInfoVCDelegate!
     
     let stackView = UIStackView()
     let itemInfoViewOne = GFItemInfoView()
@@ -61,8 +66,7 @@ class GFItemInfoVC: UIViewController {
 
     
     private func layoutUI(){
-        view.addSubview(stackView)
-        view.addSubview(actionButton)
+        view.addSubviews(stackView, actionButton)
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
         actionButton.translatesAutoresizingMaskIntoConstraints = false
